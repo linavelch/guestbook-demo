@@ -1,0 +1,154 @@
+<body>
+  <h1>Welcome to my Guestbook</h1>
+  {{> guestBook}}
+</body>
+
+<template name="guestBook">
+  <div class='col-xs-3'>
+
+  <form>
+
+    <style>
+      h1 {
+       font-family:Arial;
+       font-weight:Bold;
+       color:#4682B4;
+       text-align:center;
+       background:#d2edf4;
+       background-image:linear-gradient(to bottom, #e1e5f0, #79bbff 100%);
+       padding: 20px 15px 15px 15px;
+      }
+      body {
+        background: #F8F8FF;
+      }
+      .delete {
+        -moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	      -webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	      box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	      background-color:#79bbff;
+	      -moz-border-radius:6px;
+	      -webkit-border-radius:6px;
+	      border-radius:6px;
+	      border:1px solid #84bbf3;
+	      display:inline-block;
+	      cursor:pointer;
+	      color:#ffffff;
+	      font-family:Arial;
+	      font-size:15px;
+	      font-weight:bold;
+	      padding:6px 24px;
+	      text-decoration:none;
+	      text-shadow:0px 1px 0px #528ecc;
+      }
+      .like {
+        -moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	      -webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	      box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	      background-color:#79bbff;
+	      -moz-border-radius:6px;
+	      -webkit-border-radius:6px;
+	      border-radius:6px;
+	      border:1px solid #84bbf3;
+	      display:inline-block;
+	      cursor:pointer;
+	      color:#ffffff;
+	      font-family:Arial;
+	      font-size:15px;
+	      font-weight:bold;
+	      padding:6px 24px;
+	      text-decoration:none;
+	      text-shadow:0px 1px 0px #528ecc;
+      }
+      .comment {
+        -moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	      -webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	      box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	      background-color:#79bbff;
+	      -moz-border-radius:6px;
+	      -webkit-border-radius:6px;
+	      border-radius:6px;
+	      border:1px solid #84bbf3;
+	      display:inline-block;
+	      cursor:pointer;
+	      color:#ffffff;
+	      font-family:Arial;
+	      font-size:15px;
+	      font-weight:bold;
+	      padding:6px 24px;
+	      text-decoration:none;
+	      text-shadow:0px 1px 0px #528ecc;
+      }
+      .submit {
+        -moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+        -webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+        box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+        background-color:#79bbff;
+        -moz-border-radius:6px;
+        -webkit-border-radius:6px;
+        border-radius:6px;
+        border:1px solid #84bbf3;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:15px;
+        font-weight:bold;
+        padding:6px 24px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #528ecc;
+      }
+      .message {
+        font-size:15px;
+        border-width:medium;
+        border-style:outset;
+        padding:0 30px;
+        float:left;
+      }
+      .fileUpload {
+        position: relative;
+        overflow: hidden;
+        margin: 10px;
+      }
+      .fileUpload input.upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+      }
+    </style>
+
+      {{> loginButtons}}
+
+      <div class="form-group">
+        <label for="guestName">Name:</label>
+        <input type="text" class="form-control" name="guestName" />
+      </div>
+      <div class="form-group">
+        <label for="guestBookMessage">Message:</label>
+        <textarea name="guestBookMessage" class="form-control" cols="30" rows="3"></textarea>
+      </div>
+      <div class="fileUpload btn btn-primary">
+        <span>Upload</span>
+        <input type="file" class="upload" />
+      </div>
+      <button class="submit">Post Message</button>
+  </form>
+  <h2>
+    {{#each messages}}
+      <p class="message">
+        <strong>{{ name }}</strong>: {{ message }} ( {{ formatDate date }} )
+        <p>
+          <p>{{counter}} Likes</p>
+          <button class="like">Like</button>
+          <button class="delete">&times;</button>
+        </p>
+     </p>
+    {{/each}}
+  </h2>
+  </div>
+</template>
